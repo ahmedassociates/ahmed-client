@@ -69,6 +69,7 @@ const Contact = () => {
               <option value="business-law">Business Law</option>
               <option value="family-law">Family Law</option>
               <option value="real-estate-law">Real Estate Law</option>
+              <option value="others">Others</option>
             </select>
             <textarea name="message" cols="30" rows="10" required placeholder='Case Description'></textarea>
             <button type="submit">Make Appointment</button>
