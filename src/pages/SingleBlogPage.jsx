@@ -10,7 +10,7 @@ import { axiosReq } from '../utils/axiosReq';
 const SingleBlogPage = () => {
   const { id } = useParams();
   const { isLoading, error, data: blog } = useQuery({
-    queryKey: ['single blog'],
+    queryKey: ['single blog', id],
     queryFn: () => axiosReq.get(`/blog/${id}`).then(res => res.data)
   });
 
@@ -27,11 +27,11 @@ const SingleBlogPage = () => {
                 <div className="wrapper">
                   <h1>{blog.title} <hr /></h1>
                   <div className='info'>
-                    <div className="time"><MdOutlineAccessTimeFilled /> { new Date(blog.createdAt).toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })}</div>
+                    <div className="time"><MdOutlineAccessTimeFilled /> {new Date(blog.createdAt).toLocaleDateString('en-GB', {
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric',
+                    })}</div>
                   </div>
                   <div className="text">
                     {parser(blog.body)}

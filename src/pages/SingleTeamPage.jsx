@@ -12,7 +12,7 @@ import { Directions, Email, Phone, Place } from '@mui/icons-material';
 const SingleTeamPage = () => {
   const { id } = useParams();
   const { isLoading, error, data: team } = useQuery({
-    queryKey: ['single team'],
+    queryKey: ['single team', id],
     queryFn: () => axiosReq.get(`/team/${id}`).then(res => res.data)
   });
 
@@ -23,10 +23,10 @@ const SingleTeamPage = () => {
           isLoading ? 'Loading..' : error ? 'Something went wrong!' :
             !team ? <h2 style={{ padding: '5rem', color: 'gray' }}>Not Found!</h2> :
               <>
-                <Stack direction={{xs: 'column', md: 'row'}} gap={{xs: '0', md: 10}} alignItems='center'>
-                  <Avatar src={team?.img} sx={{ width: {xs: '120px', md: '180px'}, height: {xs: '120px', md: '180px'} }} />
-                  <Stack sx={{ maxWidth: '500px',mt: {xs: '20px',md: '0'} }}>
-                    <Typography sx={{fontSize: {xs: '20px', md: '25px'}, fontWeight: 'bold', color: '#6597F7' }}>{team.name}</Typography>
+                <Stack direction={{ xs: 'column', md: 'row' }} gap={{ xs: '0', md: 10 }} alignItems='center'>
+                  <Avatar src={team?.img} sx={{ width: { xs: '120px', md: '180px' }, height: { xs: '120px', md: '180px' } }} />
+                  <Stack sx={{ maxWidth: '500px', mt: { xs: '20px', md: '0' } }}>
+                    <Typography sx={{ fontSize: { xs: '20px', md: '25px' }, fontWeight: 'bold', color: '#6597F7' }}>{team.name}</Typography>
                     <Typography>{team.title}</Typography>
                     <hr style={{ maxWidth: '400px', opacity: '.4', marginTop: '5px' }} />
                     <Stack mt={2} gap={1}>

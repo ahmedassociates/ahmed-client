@@ -10,7 +10,7 @@ import { axiosReq } from '../utils/axiosReq';
 const SingleNewsPage = () => {
   const { id } = useParams();
   const { isLoading, error, data: news } = useQuery({
-    queryKey: ['single news'],
+    queryKey: ['single news', id],
     queryFn: () => axiosReq.get(`/news/${id}`).then(res => res.data)
   });
 
